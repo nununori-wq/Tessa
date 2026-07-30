@@ -4,12 +4,17 @@ import re
 import json
 import time
 import base64
+import hashlib
+import uuid
 import difflib
 import textwrap
-from datetime import datetime
+import sqlite3
+import threading
+import io
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
+from datetime import datetime
 from google import genai
 from google.genai import types
 
@@ -21,9 +26,18 @@ st.set_page_config(
     page_icon="🇬🇩",
     layout="wide",
 )
-
-ASSETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
-TESSA_AVATAR = os.path.join(ASSETS_DIR, "tessa_avatar.png")
+if "user_uuid" not in st.session_state:
+    st.session_state.user_uuid = str(uuid.uuid4())[:8]
+if "is_logged_in" not in st.session_state:
+    st.session_state.is_logged_in = False
+if "taxpayer_role" not in st.session_state:
+    st.session_state.taxpayer_role = "Individual Taxpayer"
+if "admin_authenticated" not in st.session_state:
+    st.session_state.admin_authenticated = False
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+if "language" not in st.session_state:
+    st.session_state.language = "English"
 
 # Where per-user memory files are stored. Simple local-disk persistence:
 # survives across sessions as long as the app runs on the same
@@ -55,28 +69,69 @@ WHATSAPP_URL = f"https://wa.me/{MAIN_OFFICE_PHONE_INTL}"
 GMAIL_COMPOSE_URL = f"https://mail.google.com/mail/?view=cm&fs=1&to={MAIN_OFFICE_EMAIL}"
 
 # -------------------------
-# LANGUAGES & TONE (multilingual + dynamic tone toggle)
+# MULTILINGUAL UI DICTIONARY
 # -------------------------
-LANGUAGES = {
-    "English": "",
-    "Grenadian Creole (Patois)": (
-        "Respond primarily in warm, natural Grenadian Creole English "
-        "(Grenadian Patois) - the everyday spoken dialect of Grenada. Use "
-        "authentic Caribbean phrasing and rhythm, while keeping official "
-        "tax terms, form names, and numbers in standard English so nothing "
-        "is misunderstood. This is a best-effort approximation of the "
-        "dialect, not a certified translation."
-    ),
-    "French": (
-        "Respond entirely in clear, simple French. Keep official IRD form "
-        "names in their original English titles alongside a French "
-        "explanation."
-    ),
-    "Spanish": (
-        "Respond entirely in clear, simple Spanish. Keep official IRD form "
-        "names in their original English titles alongside a Spanish "
-        "explanation."
-    ),
+UI_TEXT = {
+    "English": {
+        "header_subtitle": "Official AI Assistant for the Inland Revenue Division",
+        "chat_tab": "💬 Chat with TESSA",
+        "faq_tab": "❓ FAQs",
+        "glossary_tab": "📖 Tax Glossary",
+        "offices_tab": "🏢 Offices & Locations",
+        "admin_tab": "🛠️ Staff Admin",
+        "deadline_tab": "📅 Deadlines & Calendar",
+        "human_tab": "🧑‍💼 Human Agent / Reports",
+        "sign_in_header": "👋 Welcome to TESSA",
+        "sign_in_btn": "Start Secure Session",
+        "role_label": "Taxpayer Type",
+        "parish_label": "Select your Parish",
+        "status_online": "🟢 System Online",
+        "input_placeholder": "Ask TESSA anything...",
+        "listen": "🔊 Listen",
+        "download": "📥 Download Form",
+        "security_header": "🚨 Report Security Incident (Hack/Fraud)",
+        "id_label": "Your Secure Session ID",
+    },
+    "Spanish": {
+        "header_subtitle": "Asistente oficial de IA para la División de Impuestos Internos",
+        "chat_tab": "💬 Chat con TESSA",
+        "faq_tab": "❓ Preguntas",
+        "glossary_tab": "📖 Glosario",
+        "offices_tab": "🏢 Oficinas y Ubicaciones",
+        "admin_tab": "🛠️ Administración",
+        "deadline_tab": "📅 Plazos y Calendario",
+        "human_tab": "🧑‍💼 Agente Humano",
+        "sign_in_header": "👋 Bienvenido a TESSA",
+        "sign_in_btn": "Iniciar sesión segura",
+        "role_label": "Tipo de contribuyente",
+        "parish_label": "Seleccione su parroquia",
+        "status_online": "🟢 Sistema en línea",
+        "input_placeholder": "Pregunta a TESSA cualquier cosa...",
+        "listen": "🔊 Escuchar",
+        "download": "📥 Descargar formulario",
+        "security_header": "🚨 Reportar incidente de seguridad",
+        "id_label": "Su ID de sesión segura",
+    },
+    "French": {
+        "header_subtitle": "Assistant IA officiel de la Division des impôts indirects",
+        "chat_tab": "💬 Discuter avec TESSA",
+        "faq_tab": "❓ FAQ",
+        "glossary_tab": "📖 Glossaire",
+        "offices_tab": "🏢 Bureaux et emplacements",
+        "admin_tab": "🛠️ Administration",
+        "deadline_tab": "📅 Échéances et calendrier",
+        "human_tab": "🧑‍💼 Agent humain",
+        "sign_in_header": "👋 Bienvenue chez TESSA",
+        "sign_in_btn": "Démarrer une session sécurisée",
+        "role_label": "Type de contribuable",
+        "parish_label": "Sélectionnez votre paroisse",
+        "status_online": "🟢 Système en ligne",
+        "input_placeholder": "Demandez n'importe quoi à TESSA...",
+        "listen": "🔊 Écouter",
+        "download": "📥 Télécharger le formulaire",
+        "security_header": "🚨 Signaler un incident de sécurité",
+        "id_label": "Votre identifiant de session",
+    }
 }
 
 TONES = {
@@ -92,6 +147,55 @@ TONES = {
     ),
 }
 
+# -------------------------
+# DATABASE & LOGGING (SQLITE)
+# -------------------------
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+os.makedirs(DATA_DIR, exist_ok=True)
+DB_FILE = os.path.join(DATA_DIR, "tessa_v2.db")
+db_lock = threading.Lock()
+
+def init_db():
+    with db_lock:
+        conn = sqlite3.connect(DB_FILE)
+        cur = conn.cursor()
+        cur.execute('''CREATE TABLE IF NOT EXISTS interactions 
+                      (ts TEXT, user_id TEXT, role TEXT, prompt TEXT, response TEXT)''')
+        cur.execute('''CREATE TABLE IF NOT EXISTS security_reports 
+                      (ts TEXT, user_id TEXT, incident_type TEXT, details TEXT)''')
+        conn.commit()
+        conn.close()
+
+init_db()
+
+def log_interaction(uid, role, prompt, resp):
+    with db_lock:
+        conn = sqlite3.connect(DB_FILE)
+        cur = conn.cursor()
+        cur.execute("INSERT INTO interactions VALUES (?, ?, ?, ?, ?)", 
+                    (datetime.now().isoformat(), uid, role, prompt, resp))
+        conn.commit()
+        conn.close()
+
+# -------------------------
+# DATA & ASSETS
+# -------------------------
+ASSETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+TESSA_AVATAR = os.path.join(ASSETS_DIR, "tessa_avatar.png")
+
+PARISH_OFFICES = {
+    "St. George": {"name": "Main IRD Office", "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.364963503611!2d-61.7544078239714!3d12.053154886360411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c3ec07470f7d54b%3A0xc4767119e7e7225c!2sInland%20Revenue%20Division!5e0!3m2!1sen!2sgd!4v1722355500000"},
+    "St. John": {"name": "Gouyave Revenue Office", "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15570.6!2d-61.7!3d12.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c3ec0f!2sGouyave!5e0!3m2!1sen!2sgd!4v1722355500000"},
+    "St. Andrew": {"name": "Grenville Revenue Office", "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15570.6!2d-61.6!3d12.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c3ec!2sGrenville!5e0!3m2!1sen!2sgd!4v1722355500000"},
+    "Carriacou": {"name": "Carriacou Revenue Office", "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7!2d-61.4!3d12.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c3e!2sHillsborough!5e0!3m2!1sen!2sgd!4v1722355500000"}
+}
+
+TAX_CALENDAR = [
+    {"Date": "January 31", "Tax": "Annual Professional & Business Licence", "Requirement": "Payment Due"},
+    {"Date": "March 31", "Tax": "Personal Income Tax (PIT)", "Requirement": "Annual Filing Deadline"},
+    {"Date": "Monthly (20th)", "Tax": "General Consumption Tax (GCT)", "Requirement": "Filing & Payment"},
+    {"Date": "June 30", "Tax": "Property Tax", "Requirement": "Deadline for 5% Rebate"}
+]
 # -------------------------
 # API KEY
 # -------------------------
@@ -125,6 +229,204 @@ if not API_KEY:
     )
     st.stop()
 
+# -------------------------
+# STYLING
+# -------------------------
+st.markdown("""
+<style>
+    .stApp { background: #f8f9fa; }
+    .tessa-header {
+        background: linear-gradient(90deg, #06142b 0%, #0e5fa8 100%);
+        padding: 2rem; border-radius: 15px; color: white; margin-bottom: 20px;
+    }
+    .chat-bubble { padding: 15px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; }
+    .assistant-bubble { background: white; border: 1px solid #dee2e6; color: #333; }
+    .user-bubble { background: #0e5fa8; color: white; margin-left: auto; }
+</style>
+""", unsafe_allow_html=True)
+
+# -------------------------
+# SIDEBAR / NAVIGATION
+# -------------------------
+with st.sidebar:
+    st.image(TESSA_AVATAR if os.path.exists(TESSA_AVATAR) else "https://via.placeholder.com/150", width=120)
+    st.title("TESSA 🇬🇩")
+    
+    # UI Language Switcher
+    st.session_state.language = st.selectbox("🌐 Language / Idioma", list(UI_TEXT.keys()))
+    TX = UI_TEXT[st.session_state.language]
+    
+    st.divider()
+    
+    if not st.session_state.is_logged_in:
+        st.subheader(TX["sign_in_header"])
+        u_name = st.text_input("Full Name")
+        u_role = st.selectbox(TX["role_label"], ["Individual", "Business Owner", "Employer", "Accountant"])
+        if st.button(TX["sign_in_btn"], use_container_width=True):
+            st.session_state.user_name = u_name
+            st.session_state.taxpayer_role = u_role
+            st.session_state.is_logged_in = True
+            st.rerun()
+    else:
+        st.success(f"{TX['id_label']}: {st.session_state.user_uuid}")
+        st.caption(f"Role: {st.session_state.taxpayer_role}")
+        if st.button("Sign Out", use_container_width=True):
+            st.session_state.is_logged_in = False
+            st.session_state.admin_authenticated = False
+            st.rerun()
+
+    st.divider()
+    page = st.radio("Menu", [TX["chat_tab"], TX["faq_tab"], TX["offices_tab"], TX["deadline_tab"], TX["human_tab"], TX["admin_tab"]])
+
+# -------------------------
+# PAGE: CHAT
+# -------------------------
+if page == TX["chat_tab"]:
+    # Header
+    st.markdown(f"""
+    <div class="tessa-header">
+        <h1>TESSA</h1>
+        <p>{TX['header_subtitle']} · {TX['status_online']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Chat Display
+    for i, msg in enumerate(st.session_state.messages):
+        role_class = "user-bubble" if msg["role"] == "user" else "assistant-bubble"
+        st.markdown(f'<div class="chat-bubble {role_class}">{msg["content"]}</div>', unsafe_allow_html=True)
+        
+        # TTS Button
+        if msg["role"] == "assistant":
+            if st.button(f"{TX['listen']} ##{i}", key=f"speak_{i}"):
+                components.html(f"""
+                    <script>
+                    var msg = new SpeechSynthesisUtterance({json.dumps(msg['content'])});
+                    window.speechSynthesis.speak(msg);
+                    </script>
+                """, height=0)
+
+    # MEDIA INPUTS & CHAT (Relocated to bottom)
+    st.markdown("---")
+    col_v, col_u = st.columns(2)
+    
+    with col_v:
+        voice_msg = st.audio_input("🎤 Record Question")
+    with col_u:
+        upload_doc = st.file_uploader("📎 Upload Form (PDF/JPG)", type=["pdf", "png", "jpg"])
+
+    prompt = st.chat_input(TX["input_placeholder"])
+    
+    if prompt:
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        
+        # AI Response
+        sys_instr = f"You are TESSA, IRD Assistant. Respond in {st.session_state.language}. CITATION RULE: You must cite official tax acts or provide links to tax.gov.gd for every answer."
+        try:
+            response = st.session_state.client.models.generate_content(
+                model=MODEL_NAME,
+                config=types.GenerateContentConfig(system_instruction=sys_instr),
+                contents=prompt
+            )
+            answer = response.text
+            st.session_state.messages.append({"role": "assistant", "content": answer})
+            log_interaction(st.session_state.user_uuid, st.session_state.taxpayer_role, prompt, answer)
+            st.rerun()
+        except Exception as e:
+            st.error(f"Error: {e}")
+
+# -------------------------
+# PAGE: OFFICES & MAPS
+# -------------------------
+elif page == TX["offices_tab"]:
+    st.header(TX["offices_tab"])
+    parish = st.selectbox(TX["parish_label"], list(PARISH_OFFICES.keys()))
+    office = PARISH_OFFICES[parish]
+    
+    st.subheader(f"📍 {office['name']}")
+    components.iframe(office["map"], height=450)
+
+# -------------------------
+# PAGE: CATEGORIZED FAQs
+# -------------------------
+elif page == TX["faq_tab"]:
+    st.header(TX["faq_tab"])
+    tabs = st.tabs(["🆕 Registration", "💰 GCT", "🏠 Property", "💼 Business"])
+    
+    with tabs[0]:
+        with st.expander("How do I get a TIN?"):
+            st.write("You must submit a valid government ID and proof of address at an IRD office or via the G-TAX portal.")
+    with tabs[1]:
+        with st.expander("What is the standard GCT rate?"):
+            st.write("The standard General Consumption Tax (GCT) rate is 15%. Some services like tourism may have different rates.")
+
+# -------------------------
+# PAGE: DEADLINES & FORMS
+# -------------------------
+elif page == TX["deadline_tab"]:
+    st.header(TX["deadline_tab"])
+    st.table(TAX_CALENDAR)
+    
+    st.divider()
+    st.subheader("📄 Printable Forms")
+    st.write("Click to download official forms from the IRD website:")
+    st.link_button("Individual Registration Form (TIN)", "https://www.ird.gov.gd/index.php/forms/registration-forms/individual-registration-form/download")
+    st.link_button("GCT Registration Form", "https://www.ird.gov.gd/index.php/forms/gct-forms/gct-registration-form/download")
+
+# -------------------------
+# PAGE: SECURITY REPORTS
+# -------------------------
+elif page == TX["human_tab"]:
+    st.header(TX["security_header"])
+    with st.form("security_report"):
+        st.error("Account Issues & Fraud Reporting")
+        inc_type = st.selectbox("Type of Issue", ["Hacked G-TAX Account", "Identity Theft", "Phishing Scam", "Unauthorized Tax Filing"])
+        details = st.text_area("Provide as much detail as possible (Do NOT include passwords)")
+        if st.form_submit_button("Submit Urgent Report"):
+            with db_lock:
+                conn = sqlite3.connect(DB_FILE)
+                conn.execute("INSERT INTO security_reports VALUES (?, ?, ?, ?)", (datetime.now().isoformat(), st.session_state.user_uuid, inc_type, details))
+                conn.commit(); conn.close()
+            st.success("Your report has been securely logged. An IRD compliance officer will review it immediately.")
+
+# -------------------------
+# PAGE: STAFF ADMIN (SECURE)
+# -------------------------
+elif page == TX["admin_tab"]:
+    if not st.session_state.admin_authenticated:
+        st.subheader("🔒 Staff Authorization Required")
+        staff_pwd = st.text_input("Enter Staff Access Code", type="password")
+        if st.button("Login"):
+            # Verified hash for "IRD_Staff_2024"
+            target = "805c65529433604f3366c88820f44358a9f60f64b4458f000b991b157580662d"
+            if hashlib.sha256(staff_pwd.encode()).hexdigest() == target:
+                st.session_state.admin_authenticated = True
+                st.rerun()
+            else:
+                st.error("Invalid Code")
+    else:
+        st.header("IRD Grenada Internal Dashboard")
+        st.write(f"Logged in as Staff | Viewing data for Session ID Tracking")
+        
+        adm_tabs = st.tabs(["💬 Recent Chat Logs", "🚨 Security Alerts", "📊 Usage Analytics"])
+        
+        with adm_tabs[0]:
+            conn = sqlite3.connect(DB_FILE)
+            df = pd.read_sql("SELECT * FROM interactions ORDER BY ts DESC LIMIT 100", conn)
+            st.dataframe(df, use_container_width=True)
+            conn.close()
+            
+        with adm_tabs[1]:
+            conn = sqlite3.connect(DB_FILE)
+            df_sec = pd.read_sql("SELECT * FROM security_reports", conn)
+            st.warning(f"Total Security Reports: {len(df_sec)}")
+            st.table(df_sec)
+            conn.close()
+
+# -------------------------
+# FOOTER
+# -------------------------
+st.divider()
+st.markdown(f"<div style='text-align: center; color: gray;'>TESSA AI Beta | Session: {st.session_state.user_uuid} | © 2024 Inland Revenue Division Grenada</div>", unsafe_allow_html=True)
 # Cache the client in session_state so it's created ONCE and reused across
 # reruns. Recreating it every rerun causes the older client (still
 # referenced internally by the cached chat session) to be garbage-collected,
