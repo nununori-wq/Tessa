@@ -68,6 +68,31 @@ MAIN_OFFICE_EMAIL = "helpdesk@ird.gov.gd"
 WHATSAPP_URL = f"https://wa.me/{MAIN_OFFICE_PHONE_INTL}"
 GMAIL_COMPOSE_URL = f"https://mail.google.com/mail/?view=cm&fs=1&to={MAIN_OFFICE_EMAIL}"
 
+
+# -------------------------
+# LANGUAGES & TONE (multilingual + dynamic tone toggle)
+# -------------------------
+LANGUAGES = {
+    "English": "",
+    "Grenadian Creole (Patois)": (
+        "Respond primarily in warm, natural Grenadian Creole English "
+        "(Grenadian Patois) - the everyday spoken dialect of Grenada. Use "
+        "authentic Caribbean phrasing and rhythm, while keeping official "
+        "tax terms, form names, and numbers in standard English so nothing "
+        "is misunderstood. This is a best-effort approximation of the "
+        "dialect, not a certified translation."
+    ),
+    "French": (
+        "Respond entirely in clear, simple French. Keep official IRD form "
+        "names in their original English titles alongside a French "
+        "explanation."
+    ),
+    "Spanish": (
+        "Respond entirely in clear, simple Spanish. Keep official IRD form "
+        "names in their original English titles alongside a Spanish "
+        "explanation."
+    ),
+}
 # -------------------------
 # MULTILINGUAL UI DICTIONARY
 # -------------------------
