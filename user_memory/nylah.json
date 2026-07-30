@@ -1,0 +1,90 @@
+{
+  "display_name": "Nylah",
+  "first_seen": "2026-07-22T23:20:51",
+  "visit_count": 17,
+  "topics": [
+    "What taxes do businesses pay in Grenada?",
+    "How do I pay my taxes?",
+    "How to run successful business",
+    "Where are the offices in grenada",
+    "how can i contact them",
+    "What taxes do businesses pay in Grenada?",
+    "How do I correct errors on my registration form?",
+    "How do I pay my taxes?"
+  ],
+  "last_seen": "2026-07-29T15:18:07",
+  "chat_history": [
+    {
+      "role": "assistant",
+      "content": "Welcome back, Nylah! \ud83d\ude0a Great to see you again \u2014 your last visit was July 23, 2026. Last time we talked about things like: What taxes do businesses pay in Grenada?, How do I pay my taxes?, How to run successful business. How can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "Where are the offices in grenada"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello again, Nylah! It is lovely to see you back. I remember we previously discussed how to get your TIN registered and the types of taxes that businesses in Grenada are responsible for\u2014I hope those details have been helpful for your planning!\n\nRegarding our office locations, the Inland Revenue Division main office is located in the **Ministry of Finance Building on the Carenage, St. George\u2019s**.\n\nWe also have district offices to make it easier for you to access our services:\n\n*   **St. John\u2019s:** Gouyave\n*   **St. Mark\u2019s:** Victoria\n*   **St. Patrick\u2019s:** Sauteurs\n*   **St. Andrew\u2019s:** Grenville\n*   **St. David\u2019s:** St. David\u2019s Main Road\n*   **Carriacou:** Hillsborough\n\nPlease note that our standard operating hours are generally Monday to Friday, from 8:00 a.m. to 4:00 p.m. \n\nIs there anything specific you were planning to visit us for today, or is there another tax-related question I can assist you with?"
+    },
+    {
+      "role": "user",
+      "content": "how can i contact them"
+    },
+    {
+      "role": "assistant",
+      "content": "You can reach out to the Inland Revenue Division in a few different ways, Nylah. Depending on your preference, here is how you can get in touch:\n\n*   **Telephone:** You can call our main office at **(473) 440-3556**.\n*   **Email:** You can send your inquiries to **helpdesk@ird.gov.gd**.\n*   **Fax:** If you need to send documents via fax, you can use **(473) 440-4111**.\n\nIf you are calling regarding a specific tax matter, it is always helpful to have your TIN (Taxpayer Identification Number) ready, though please remember that for your security, I cannot access your personal account details here.\n\nAre you looking to speak with a specific department, or is there something else I can help you with today?"
+    },
+    {
+      "role": "assistant",
+      "content": "Welcome back, Nylah! \ud83d\ude0a Great to see you again \u2014 your last visit was July 23, 2026. Last time we talked about things like: How to run successful business, Where are the offices in grenada, how can i contact them. How can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "What taxes do businesses pay in Grenada?"
+    },
+    {
+      "role": "assistant",
+      "content": "\u26a0\ufe0f I'm having trouble reaching the live assistant service right now, but here's a close match from TESSA's offline FAQ:\n\nFirst obtain a Business Registration Certificate from CAIPO, then submit it along with your business details to the IRD online or in person."
+    },
+    {
+      "role": "user",
+      "content": "Is there a specific office for Carriacou residents?"
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, the Carriacou office (see \ud83c\udfe2 Offices tab) serves residents of Carriacou and Petite Martinique."
+    },
+    {
+      "role": "user",
+      "content": "Can a non-resident register with the IRD?"
+    },
+    {
+      "role": "assistant",
+      "content": "Yes, non-residents who earn income or conduct business within Grenada can register for a TIN."
+    },
+    {
+      "role": "user",
+      "content": "I lost my Tax Clearance Certificate."
+    },
+    {
+      "role": "assistant",
+      "content": "You need a Tax Clearance Certificate for government tenders, property transfers, work permits, and certain business loans."
+    },
+    {
+      "role": "user",
+      "content": "How do I correct errors on my registration form?"
+    },
+    {
+      "role": "assistant",
+      "content": "Correct your details online through your G-TAX account or submit supporting documents to IRD Customer Support to request an update."
+    },
+    {
+      "role": "user",
+      "content": "How do I pay my taxes?"
+    },
+    {
+      "role": "assistant",
+      "content": "\u26a0\ufe0f Sorry, I ran into a problem reaching the assistant service (401 UNAUTHENTICATED. {'error': {'code': 401, 'message': 'Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.', 'status': 'UNAUTHENTICATED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'ACCESS_TOKEN_TYPE_UNSUPPORTED', 'metadata': {'service': 'generativelanguage.googleapis.com', 'method': 'google.ai.generativelanguage.v1beta.GenerativeService.StreamGenerateContent'}}]}}). Please try again in a moment, check the \u2753 FAQs tab, or contact the Inland Revenue Division for assistance."
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+Term,Definition
+TIN (Tax Identification Number),A unique number issued by the IRD to identify a taxpayer - individual or business - in all tax dealings.
+GCT (General Consumption Tax),"A tax applied to goods and services consumed in Grenada, collected by registered businesses and remitted to the IRD."
+Income Tax,"A tax on income earned by individuals or businesses, including salaries, business profits, rental income, and other earnings."
+Property Tax,"A tax based on the ownership of land, buildings, or other real property in Grenada."
+Stamp Tax (Stamp Duty),"A tax charged on certain legal documents and transactions, such as property transfers or agreements."
+Tax Clearance Certificate,"An official document confirming a taxpayer has no outstanding tax debts, often required for government tenders, loans, work permits, or property transfers."
+Tax Return,"A form filed with the IRD reporting income, deductions, and tax owed or refunded for a given period."
+Assessment,"The IRD's official calculation of how much tax a person or business owes, based on their filed return or available records."
+Arrears,Unpaid tax amounts that are overdue past their original payment deadline.
+Penalty,"An additional charge applied for late filing, late payment, or non-compliance with tax rules."
+Interest (Tax Interest),"An extra charge added to overdue tax amounts, calculated monthly until the balance is paid."
+Audit,A formal review by the IRD of a taxpayer's financial records to verify that filed information is accurate.
+Objection,"A formal written disagreement filed by a taxpayer against an IRD tax assessment, within a set statutory deadline."
+Exemption,"A specific circumstance where a person, organization, or transaction is legally excused from paying a particular tax."
+Deduction,"An allowable expense or amount subtracted from total income before tax is calculated, reducing taxable income."
+Withholding Tax,Tax deducted at the source of certain payments (such as wages or contractor fees) before the recipient receives the funds.
+Filing Deadline,The official date by which a tax return or payment must be submitted to avoid penalties.
+Statement of Account,"An official IRD record showing a taxpayer's payment history, balances, and any outstanding amounts."
+Compliance,"Meeting all legal tax obligations - registering, filing on time, and paying the correct amount owed."
+Remittance,The act of submitting collected tax funds (such as GCT collected from customers) to the IRD.
+Business Registration Certificate,"A certificate issued by CAIPO confirming a business is legally registered, required before registering with the IRD."
+Sole Trader / Sole Proprietor,"An individual who owns and operates a business under their own TIN, without forming a separate company."
+Fiscal Year,"The 12-month period used for calculating and reporting taxes, which may or may not match the calendar year."
+Certificate of Registration,The official document confirming a taxpayer (individual or business) is registered with the IRD.
+Taxpayer Portal (G-TAX),"The IRD's online system where taxpayers can register, file returns, make payments, and manage their account."
+Taxpayer Account,"A taxpayer's official record with the IRD, tracking their registration, filings, and payment history."
+Non-Individual,"A registration category for legal entities other than a single person, such as companies or partnerships."
+Individual Enterprise,A registration category for a sole trader operating a business under their own name/TIN.
+Partnership,"A business structure where two or more people share ownership, profits, and tax obligations."
+Incorporated Company,"A business formally registered as a separate legal entity, distinct from its owners."
+Unincorporated Business,"A business that has not been formally incorporated as a separate legal entity, such as a sole trader."
+Legal Entity,"Any organization or individual recognized by law as having rights and obligations, including tax obligations."
+Beneficial Owner,"The individual(s) who ultimately own or control a business, even if not the registered legal owner."
+Authorized Representative,A person formally permitted (usually via written authorization) to act on a taxpayer's behalf with the IRD.
+Change of Particulars,"A formal update to a taxpayer's registered details, such as address, name, or business activity."
+Deregistration,"The formal process of closing a tax registration, typically after a business ceases operations."
+Reactivation,The process of restoring a previously deregistered or inactive tax account.
+Gross Income,Total income earned before any deductions or allowances are applied.
+Net Income,Income remaining after allowable deductions and expenses have been subtracted from gross income.
+Taxable Income,The portion of income that is actually subject to tax after deductions and exemptions.
+Allowable Expense,A business or personal expense that tax rules permit you to deduct from income before calculating tax.
+Non-Allowable Expense,An expense that tax rules do not permit to be deducted when calculating taxable income.
+Capital Allowance,A deduction allowed for the wear and tear (depreciation) of business assets over time.
+Depreciation,"The reduction in value of an asset over time, often used in calculating capital allowances."
+Emoluments,"Salary, wages, and other compensation paid to an employee, generally subject to income tax."
+Benefits in Kind,Non-cash perks provided by an employer (e.g. a company vehicle) that may be treated as taxable income.
+Chargeable Income,Income that is subject to tax after all applicable deductions and exemptions.
+Tax Bracket,A range of income taxed at a particular rate under a progressive tax system.
+Progressive Tax,A tax system where the rate increases as income increases.
+Flat Tax,A tax system that applies the same rate to all taxpayers regardless of income level.
+Self-Assessment,"A system where the taxpayer calculates and reports their own tax liability, subject to IRD review."
+PAYE (Pay As You Earn),A system where an employer withholds income tax directly from an employee's salary each pay period.
+Employer's Return,A filing submitted by an employer summarizing wages paid and taxes withheld for employees.
+Employee's Return,An individual income tax return filed by an employee reporting their income and tax position.
+Annual Return,"A tax return covering a full tax year, summarizing income, deductions, and tax owed."
+Provisional Tax,"Estimated tax paid in advance during the year, based on expected income, and reconciled later."
+Estimated Tax,"A projected tax liability calculated before final figures are confirmed, often used for advance payments."
+Final Tax,The confirmed tax liability once a return is fully processed and reconciled.
+Double Taxation,When the same income is taxed by two different jurisdictions.
+Tax Treaty,An agreement between two countries to prevent double taxation and clarify tax obligations for cross-border income.
+Tax Residency,A status determining which country's tax rules primarily apply to an individual or business.
+Non-Resident,"A person or business not considered a tax resident of Grenada, which can affect their tax treatment."
+Source of Income,"The origin of earnings (e.g. employment, business, investment), which can affect how it's taxed."
+Worldwide Income,"All income earned by a taxpayer globally, which may need to be reported depending on residency rules."
+Territorial Tax System,A tax system that generally only taxes income earned within the country's own borders.
+Input Tax,"GCT paid by a registered business on its own purchases, which may be reclaimed against output tax."
+Output Tax,GCT collected by a registered business from its customers on sales of goods or services.
+Taxable Supply,A sale of goods or services that is subject to GCT.
+Exempt Supply,A sale of goods or services that is not subject to GCT at all.
+Zero-Rated Supply,"A taxable supply charged GCT at 0%, still counted toward taxable turnover."
+Standard-Rated Supply,A supply taxed at the regular GCT rate.
+GCT Threshold,The minimum level of taxable turnover at which a business must register for GCT.
+GCT Return,"The periodic filing where a GCT-registered business reports output tax, input tax, and net tax payable."
+Reverse Charge,"A mechanism where the buyer, rather than the seller, is responsible for accounting for GCT on a transaction."
+Place of Supply,The location rules used to determine where a transaction is considered to occur for GCT purposes.
+Time of Supply,The point at which a transaction is considered to occur for GCT reporting purposes.
+Tax Invoice,"An official invoice showing GCT charged, required to support input tax claims."
+Tax Fraction,"The portion of a GCT-inclusive price that represents the tax itself, used in calculations."
+Net Tax Payable,The amount a GCT-registered business owes after subtracting input tax from output tax.
+Bad Debt Relief,Relief allowing a business to reclaim GCT already paid on a sale that was never actually collected from the customer.
+Rateable Value,The value assigned to a property for the purpose of calculating property tax.
+Market Value,The estimated price a property would sell for on the open market.
+Land Tax,"A tax charged specifically on land ownership, which may be part of or related to property tax."
+Improved Value,The assessed value of a property including buildings and other improvements on the land.
+Unimproved Value,"The assessed value of land alone, excluding any buildings or improvements."
+Property Assessment Notice,An official notice from the IRD stating a property's assessed value for tax purposes.
+Valuation Roll,The official register listing assessed property values used for property tax purposes.
+Property Transfer Tax,A tax that may apply when ownership of real property changes hands.
+Conveyance,A legal document transferring ownership of property from one party to another.
+Deed,"A formal legal document, often related to property or contracts, that may require stamping."
+Instrument (Legal),A formal legal document (e.g. a contract or deed) that may be subject to stamp tax.
+Ad Valorem Duty,"Stamp tax calculated as a percentage of a transaction's value, rather than a flat amount."
+Fixed Duty,"A stamp tax charged as a set flat amount, regardless of the transaction's value."
+Affixed Stamp,A physical or digital stamp applied to a document to show that stamp tax has been paid.
+Franking,A method of marking a document to show that the required stamp tax has been paid.
+Notary,A licensed official authorized to witness and certify the signing of legal documents.
+Instalment,A partial payment made as part of a scheduled payment plan toward a larger tax liability.
+Direct Debit,A payment method allowing the IRD to automatically withdraw funds from a taxpayer's bank account.
+Standing Order,A recurring automatic payment set up by a taxpayer through their bank.
+Payment Plan,An approved arrangement allowing a taxpayer to pay an outstanding balance in scheduled instalments.
+Distraint,A legal enforcement action allowing seizure of goods/assets to satisfy an unpaid tax debt.
+Garnishee,A legal order directing a third party (like an employer or bank) to pay part of a debtor's funds directly to the IRD.
+Lien,A legal claim against property as security for an unpaid tax debt.
+Writ,A formal legal order used in the enforcement of unpaid tax debts.
+Enforcement Action,Formal legal steps taken by the IRD to collect unpaid taxes.
+Recovery Action,Steps taken to recover overdue tax amounts from a non-compliant taxpayer.
+Bailiff,"An official authorized to enforce legal judgments, including tax debt collection in some cases."
+Field Audit,An audit conducted at the taxpayer's place of business rather than at an IRD office.
+Desk Audit,A review of a taxpayer's filed documents conducted at the IRD office without a site visit.
+Risk Assessment (Tax),The IRD's process of evaluating which taxpayers or returns carry higher risk of non-compliance.
+Voluntary Disclosure,A taxpayer proactively informing the IRD of an error or omission before it's discovered independently.
+Amended Return,A corrected version of a previously filed tax return.
+Reassessment,"A revised calculation of tax owed, issued after an original assessment is reviewed or audited."
+Best Judgment Assessment,An assessment the IRD makes using its best available information when a taxpayer fails to file.
+Additional Assessment,An extra tax assessment issued when the IRD determines more tax is owed than originally assessed.
+Statute of Limitations (Tax),The legal time limit within which the IRD can assess or a taxpayer can claim certain tax matters.
+Burden of Proof,"The responsibility to provide evidence supporting a claim - in tax disputes, this often falls on the taxpayer."
+Notice of Objection,The formal written document a taxpayer files to dispute a tax assessment.
+Notice of Assessment,The official document from the IRD stating the amount of tax a taxpayer owes.
+Appeal Tribunal,A formal body that can hear and decide tax disputes beyond the IRD's internal review.
+Tax Appeal Board,"A specific body that may hear appeals against IRD tax decisions, depending on jurisdiction."
+Determination,The IRD's formal decision on a filed objection or dispute.
+Ruling,An official interpretation issued by the IRD on how tax rules apply to a specific situation.
+Ministerial Directive,A formal instruction issued by a government minister that can affect tax policy or administration.
+Fiscal Period,"A defined period (often 12 months) used for tax and financial reporting, which may differ from the calendar year."
+Accounting Period,"The timeframe covered by a set of financial statements, used as the basis for tax filings."
+Financial Statements,Formal records (like balance sheets and profit/loss statements) summarizing a business's financial position.
+Balance Sheet,"A financial statement showing a business's assets, liabilities, and equity at a specific point in time."
+Profit and Loss Statement,"A financial statement summarizing revenue, expenses, and net profit/loss over a period."
+Trial Balance,"An internal accounting report listing all ledger balances, used to check that debits equal credits."
+General Ledger,The master accounting record containing all of a business's financial transactions.
+Chart of Accounts,A structured list of all accounts used in a business's accounting system.
+Books of Account,"The financial records a business is required to keep, supporting its tax filings."
+Retained Earnings,Business profits kept within the company rather than distributed to owners/shareholders.
+Dividend,"A distribution of company profits to shareholders, which may have specific tax treatment."
+Shareholder,An individual or entity that owns shares in a company.
+Director's Fee,"Compensation paid to a company director, generally treated as taxable income."
+Related Party Transaction,"A transaction between businesses or individuals with a close relationship, which may receive extra tax scrutiny."
+Transfer Pricing,"Rules governing how related businesses price transactions between each other, to prevent tax avoidance."
+Thin Capitalization,"A situation where a company is financed mostly through debt rather than equity, which can affect tax treatment."
+National Insurance Scheme (NIS),Grenada's social security program; contributions are separate from but often processed alongside payroll taxes.
+Statutory Deduction,"A deduction from pay required by law, such as income tax withholding or NIS contributions."
+Gross Pay,An employee's total earnings before any deductions.
+Net Pay,An employee's take-home earnings after all deductions.
+Payslip,"A document given to an employee showing gross pay, deductions, and net pay for a pay period."
+Severance Pay,"A payment made to an employee upon termination of employment, which may have specific tax treatment."
+Redundancy,"Termination of employment due to a role no longer being needed, which can carry specific pay/tax rules."
+Fringe Benefit,"A non-wage benefit provided to an employee (e.g. housing, use of a vehicle) that may be taxable."
+Per Diem,"A daily allowance paid to cover expenses (e.g. travel), which may have specific tax treatment."
+Honorarium,"A payment made for services where a fee isn't legally required, which may still be taxable income."
+e-Filing,Submitting a tax return electronically through an online portal rather than on paper.
+e-Payment,"Paying taxes electronically, such as through an online portal or bank transfer."
+Digital Signature,"An electronic method of signing a document, which some tax filings may accept in place of a physical signature."
+User Credentials,The username and password (or similar) used to access an online tax account.
+Two-Factor Authentication,A security method requiring a second verification step (e.g. a code) beyond just a password.
+Session Timeout,"When an online portal automatically logs a user out after a period of inactivity, for security."
+Portal Account,A taxpayer's individual profile on the G-TAX online system.
+Online Submission Receipt,A confirmation generated after successfully submitting a return or payment online.
+System Downtime,"A period when an online system is temporarily unavailable, often for maintenance."
+Comptroller of Inland Revenue,The senior official responsible for overseeing the administration of tax laws at the IRD.
+Revenue Officer,"An IRD staff member responsible for administering, collecting, or enforcing tax obligations."
+Tax Practitioner,A professional (such as an accountant) who assists clients with tax matters.
+Tax Agent,A person or firm authorized to prepare and file tax returns on behalf of clients.
+Power of Attorney (Tax Context),A legal document authorizing someone else to act on a taxpayer's behalf.
+Confidentiality Clause,A legal provision protecting the privacy of a taxpayer's financial and personal information.
+Data Protection,"Rules and practices governing how personal taxpayer information is collected, stored, and used."
+Freedom of Information,The principle/law allowing the public to request access to certain government records.
+Gazette,"The official government publication where laws, regulations, and notices are formally published."
+Statutory Instrument,"A form of legislation made under powers granted by an existing law, often used for detailed tax regulations."
+Regulations (Tax),Detailed rules issued to implement and clarify a broader tax law.
+Act (Legislation),"A law passed by Parliament, such as the Income Tax Act or GCT Act."
+Subsidiary Legislation,Detailed rules or regulations made under the authority of a primary law/Act.
+Amendment (Legislation),A formal change made to an existing law or regulation.
+Repeal,"The formal cancellation of a law or provision, making it no longer in effect."
+Import Duty,A tax charged on goods brought into Grenada from abroad.
+Customs Duty,A tax collected by Customs on imported (and sometimes exported) goods.
+Excise Tax,"A tax on specific goods, such as alcohol, tobacco, or fuel."
+Free Trade Zone,A designated area where normal trade barriers (like tariffs) are reduced or removed.
+CARICOM,"The Caribbean Community, a regional grouping of Caribbean nations that cooperates on trade and other policy areas."
+OECS,"The Organisation of Eastern Caribbean States, a regional grouping that includes Grenada."
+Tax Information Exchange Agreement,An agreement between countries to share tax-related information to prevent evasion.
+FATCA,"The U.S. Foreign Account Tax Compliance Act, which can require reporting of certain foreign-held accounts."
+CRS (Common Reporting Standard),An international standard for the automatic exchange of financial account information between countries.
+Tax Amnesty,A limited-time program allowing taxpayers to resolve overdue taxes with reduced penalties.
+Grace Period,A short additional window after a deadline during which a filing or payment may still be accepted without penalty.
+Waiver,"An official decision to forgive part or all of a penalty, interest, or fee."
+Concession,"A special reduction or exception granted from standard tax rules, often for a specific purpose."
+Tax Incentive,A benefit (such as a reduced rate or exemption) offered to encourage specific economic activity.
+Tax Holiday,"A temporary period during which a business is exempt from certain taxes, often to encourage investment."
+Rebate,"A partial refund or reduction of tax owed, often tied to a specific qualifying circumstance."
+Credit Note,"A document issued to reduce the amount owed on a previous invoice, which can affect GCT calculations."
+Debit Note,"A document issued to increase the amount owed on a previous invoice, which can affect GCT calculations."
+Write-Off,Formally removing an amount (like an uncollectible debt) from financial records.
+Bad Debt,Money owed to a business that is considered unlikely to ever be collected.
+Provision (Accounting),An amount set aside in accounts to cover a probable future expense or liability.
+Contingent Liability,A potential financial obligation that depends on the outcome of a future event.
+Accrual Basis,"An accounting method recording income/expenses when they're earned/incurred, not when cash changes hands."
+Cash Basis,An accounting method recording income/expenses only when cash is actually received or paid.
+Reconciliation,The process of comparing two sets of records (e.g. bank statement vs. books) to ensure they match.
+Ledger,A record of financial transactions organized by account.
+Journal Entry,A record of a single financial transaction in accounting books.
+Amortization,"The gradual write-off of an intangible asset's cost over time, similar in concept to depreciation."
+Working Capital,The funds a business has available for day-to-day operations (current assets minus current liabilities).
+Liquidity,"A measure of how easily a business's assets can be converted to cash to meet obligations, including tax payments."
+Solvency,A business's ability to meet its long-term financial obligations.
+Insolvency,"A situation where a business or individual cannot pay debts as they come due, which can affect tax collection."
+Liquidation,"The formal process of winding up a business and settling its debts, including any tax liabilities."
+Receivership,"A legal process where an appointed receiver manages a business's assets, often due to financial distress."
+Bankruptcy,"A legal status for someone unable to repay debts, which can affect how outstanding taxes are handled."
