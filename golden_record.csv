@@ -1,0 +1,55 @@
+fact,value,source_url,last_verified,notes
+GCT standard rate,15%,https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Verify current rate on IRD site before quoting - rates can change in the national budget.
+GCT registration threshold,EC$300000 annual turnover,https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Businesses at or above this turnover must register for GCT.
+Income tax personal allowance,EC$36000 per year,https://tax.gov.gd/income-tax/,2024-01-01,Tax-free threshold for resident individuals - confirm current figure.
+Income tax rate (individuals),28% on chargeable income above the personal allowance,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current bracket structure on IRD site.
+Corporate income tax rate,28% of chargeable profits,https://tax.gov.gd/income-tax/,2024-01-01,Applies to resident companies - confirm current rate.
+Property tax - residential rate,0.15% of market value (land) / 0.2% (building),https://tax.gov.gd/property-tax/,2024-01-01,Confirm current schedule - property tax rates vary by property class.
+Annual income tax filing deadline,31 March,https://tax.gov.gd/income-tax/,2024-01-01,Deadline for filing the prior calendar year's return - confirm no extension has been announced.
+GCT filing frequency,Monthly,https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,GCT returns and payments are generally due monthly - confirm due date (commonly 25th of the following month).
+TIN registration requirement,Required for all individuals and businesses conducting taxable activity,https://tax.gov.gd/tin-registration/,2024-01-01,Taxpayer Identification Number is mandatory before filing or paying taxes.
+Tax Clearance Certificate purpose,Confirms a taxpayer is compliant/up to date,https://tax.gov.gd/tax-clearance-certificate/,2024-01-01,Often required for government contracts, business licenses, and property transactions.
+IRD Grenada main office location,Financial Complex, Carenage, St. George's, Grenada,https://tax.gov.gd/contact-us/,2024-01-01,Confirm current address and opening hours on the IRD contact page.
+IRD Grenada general contact,See tax.gov.gd contact page for current phone/email,https://tax.gov.gd/contact-us/,2024-01-01,Do not quote a specific phone number or email without verifying it is current.
+Stamp tax applicability,"Applies to certain legal documents/transactions (e.g. property transfers, mortgages)",https://tax.gov.gd/stamp-tax/,2024-01-01,Confirm current rate schedule by document/transaction type.
+GCT return and payment due date,25th of the month following the taxable period,https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Confirm exact due date and any weekend/holiday roll-forward rule.
+GCT rate - hotel accommodation,10%,https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Special reduced rate for hotel accommodation - confirm current rate.
+GCT zero-rated supplies,"Includes basic food items, exports, and certain medical supplies",https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Confirm current list of zero-rated goods/services.
+GCT exempt supplies,"Includes certain financial, educational, and residential rental services",https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Confirm current list of exempt goods/services.
+Property tax - commercial rate,0.3% of market value,https://tax.gov.gd/property-tax/,2024-01-01,Confirm current schedule - commercial property rate differs from residential.
+Property tax - agricultural land rate,0.1% of market value,https://tax.gov.gd/property-tax/,2024-01-01,Confirm current agricultural land classification and rate.
+Property tax annual due date,30 June,https://tax.gov.gd/property-tax/,2024-01-01,Confirm current year's exact due date and any discount for early payment.
+Property tax early payment discount,Discount available for payment before the due date,https://tax.gov.gd/property-tax/,2024-01-01,Confirm current discount percentage and qualifying window.
+PAYE (Pay As You Earn) remittance due date,14 days after the end of the month,https://tax.gov.gd/income-tax/,2024-01-01,Employers must remit withheld PAYE by this deadline - confirm current rule.
+Corporate income tax filing deadline,Within 3 months of financial year end,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current deadline - may vary by company's financial year.
+Withholding tax - dividends to non-residents,15%,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current rate and any treaty reductions.
+Withholding tax - interest to non-residents,15%,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current rate and any treaty reductions.
+Withholding tax - royalties/management fees to non-residents,15%,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current rate and any treaty reductions.
+Late filing penalty (income tax),5% of tax due plus interest,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current penalty structure and interest rate.
+Late payment interest rate,1% per month on outstanding balance,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current interest rate - subject to change.
+Tax Clearance Certificate validity period,3 to 6 months from issue date,https://tax.gov.gd/tax-clearance-certificate/,2024-01-01,Confirm current validity period - may vary by purpose.
+TIN registration required documents,"Valid photo ID, proof of address, and (for businesses) CAIPO registration certificate",https://tax.gov.gd/tin-registration/,2024-01-01,Confirm current document requirements.
+Business registration prerequisite,CAIPO business name/company registration required before IRD registration,https://caipo.gov.gd,2024-01-01,Confirm current CAIPO process and required documents.
+G-TAX online portal purpose,"Online registration, filing, and payment platform",https://tax.gov.gd,2024-01-01,Confirm current portal URL and available services.
+Stamp tax - property transfer rate,5% of property value,https://tax.gov.gd/stamp-tax/,2024-01-01,Confirm current rate - may vary by transaction type and party residency.
+Land transfer tax,10% of property value (non-citizens may pay a higher rate),https://tax.gov.gd/stamp-tax/,2024-01-01,Confirm current rate and any citizen/non-citizen distinction.
+Motor vehicle purchase tax,Varies by engine size/vehicle value,https://tax.gov.gd,2024-01-01,Confirm current rate schedule with Customs & Excise Division.
+Environmental levy on imported vehicles,Applies at point of import,https://tax.gov.gd,2024-01-01,Confirm current levy amount and applicable vehicle categories.
+National Insurance Scheme (NIS) contribution rate,Shared between employer and employee,https://www.nis.gd,2024-01-01,NIS is separate from IRD - confirm current contribution rate with NIS directly.
+Comptroller of Inland Revenue role,Senior official responsible for administering and enforcing tax laws,https://tax.gov.gd/about-us/,2024-01-01,Confirm current officeholder name before citing personally.
+Ministry overseeing IRD,Ministry of Finance,https://tax.gov.gd/about-us/,2024-01-01,IRD operates under the Ministry of Finance's fiscal policy direction.
+Tax assessment objection deadline,30 days from date of assessment notice,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current objection window and appeal process.
+Tax appeal escalation path,"Objection to Comptroller, then appeal to Appeal Board/Court if unresolved",https://tax.gov.gd,2024-01-01,Confirm current appeal process and relevant legislation.
+Statute of limitations for tax assessment,6 years from the relevant tax period (longer if fraud is involved),https://tax.gov.gd,2024-01-01,Confirm current limitation period under the Income Tax Act.
+Self-employed/sole trader registration requirement,Must register for a TIN and file annual returns,https://tax.gov.gd/tin-registration/,2024-01-01,Confirm current filing obligations for the self-employed.
+Non-resident individual tax rate,28% on Grenada-sourced income,https://tax.gov.gd/income-tax/,2024-01-01,Confirm current rate - non-residents generally do not get the personal allowance.
+CARICOM double taxation relief,Available under CARICOM tax treaty arrangements,https://tax.gov.gd,2024-01-01,Confirm current treaty coverage and claim process.
+Tax incentives for hotel/tourism investment,"Available under the Investment Promotion Act, subject to approval",https://www.gidc.gd,2024-01-01,Confirm current incentive scope with the Grenada Investment Development Corporation (GIDC).
+District Revenue Office - Sauteurs parish served,St. Patrick,https://tax.gov.gd/contact-us/,2024-01-01,Confirm current office address and hours.
+District Revenue Office - Grenville parish served,St. Andrew,https://tax.gov.gd/contact-us/,2024-01-01,Confirm current office address and hours.
+District Revenue Office - Gouyave parish served,St. John,https://tax.gov.gd/contact-us/,2024-01-01,Confirm current office address and hours.
+District Revenue Office - Victoria parish served,St. Mark,https://tax.gov.gd/contact-us/,2024-01-01,Confirm current office address and hours.
+District Revenue Office - Carriacou parish served,Carriacou & Petite Martinique,https://tax.gov.gd/contact-us/,2024-01-01,Confirm current office address and hours.
+Tax Clearance Certificate common use cases,"Government contracts, business licence renewal, property transactions, work permits",https://tax.gov.gd/tax-clearance-certificate/,2024-01-01,Confirm current list of situations requiring a certificate.
+GCT input tax credit,Registered businesses may claim GCT paid on business purchases against GCT collected,https://tax.gov.gd/general-consumption-tax-gct/,2024-01-01,Confirm current input tax credit rules and restrictions.
+Annual business/trade licence requirement,Required for most businesses operating in Grenada,https://tax.gov.gd,2024-01-01,Confirm current licensing authority and renewal deadline.
