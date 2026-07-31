@@ -1,0 +1,135 @@
+<!-- TESSA - IRD Grenada floating chat widget. Paste this snippet just
+     before </body> on any page of the IRD Grenada website. Replace
+     TESSA_APP_URL with the deployed Streamlit app URL. -->
+<div id="tessa-widget-root">
+  <button id="tessa-bubble-btn" aria-label="Chat with TESSA">
+    <span id="tessa-bubble-icon">💬</span>
+  </button>
+
+  <div id="tessa-widget-panel">
+    <div id="tessa-widget-header">
+      <span>🇬🇩 TESSA - IRD Grenada</span>
+      <button id="tessa-widget-close" aria-label="Close chat">✕</button>
+    </div>
+    <iframe
+      id="tessa-widget-iframe"
+      src=""
+      data-src="https://TESSA_APP_URL/?embed=widget"
+      title="TESSA - IRD Grenada Assistant"
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>
+
+<style>
+  #tessa-widget-root, #tessa-widget-root * { box-sizing: border-box; }
+
+  #tessa-bubble-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0e5fa8, #1a8fd1);
+    border: none;
+    box-shadow: 0 4px 14px rgba(6,20,43,0.35);
+    cursor: pointer;
+    z-index: 999998;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease-in-out;
+  }
+  #tessa-bubble-btn:hover { transform: scale(1.06); }
+
+  #tessa-widget-panel {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    width: 380px;
+    max-width: calc(100vw - 32px);
+    height: 620px;
+    max-height: calc(100vh - 140px);
+    background: #eef3fa;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(6,20,43,0.35);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    z-index: 999999;
+  }
+  #tessa-widget-panel.tessa-open { display: flex; }
+
+  #tessa-widget-header {
+    background: linear-gradient(90deg, #06142b 0%, #0e5fa8 55%, #1a8fd1 100%);
+    color: #fff;
+    padding: 12px 14px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #tessa-widget-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 6px;
+  }
+
+  #tessa-widget-iframe {
+    flex: 1;
+    width: 100%;
+    border: none;
+  }
+
+  @media (max-width: 480px) {
+    #tessa-widget-panel {
+      right: 8px;
+      left: 8px;
+      width: auto;
+      bottom: 84px;
+      height: calc(100vh - 120px);
+    }
+    #tessa-bubble-btn { right: 16px; bottom: 16px; }
+  }
+</style>
+
+<script>
+  (function () {
+    var btn = document.getElementById('tessa-bubble-btn');
+    var panel = document.getElementById('tessa-widget-panel');
+    var closeBtn = document.getElementById('tessa-widget-close');
+    var iframe = document.getElementById('tessa-widget-iframe');
+    var loaded = false;
+
+    function openWidget() {
+      if (!loaded) {
+        iframe.src = iframe.getAttribute('data-src');
+        loaded = true;
+      }
+      panel.classList.add('tessa-open');
+      btn.querySelector('#tessa-bubble-icon').textContent = '✕';
+    }
+
+    function closeWidget() {
+      panel.classList.remove('tessa-open');
+      btn.querySelector('#tessa-bubble-icon').textContent = '💬';
+    }
+
+    btn.addEventListener('click', function () {
+      if (panel.classList.contains('tessa-open')) {
+        closeWidget();
+      } else {
+        openWidget();
+      }
+    });
+    closeBtn.addEventListener('click', closeWidget);
+  })();
+</script>
