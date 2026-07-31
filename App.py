@@ -2931,7 +2931,7 @@ header_html = (
 st.markdown(header_html, unsafe_allow_html=True)
 if not st.query_params.get("embed"):
     preview_toggle = st.toggle(
-        "🔲 Preview compact corner-widget layout", value=st.session_state.widget_preview,
+        "Compact corner-widget layout", value=st.session_state.widget_preview,
         help="Shows exactly how TESSA looks embedded as a small corner chat bubble on the IRD website.",
     )
     if preview_toggle != st.session_state.widget_preview:
